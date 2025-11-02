@@ -7,8 +7,8 @@ exports.criarPedido = async (req, res) => {
     const pedido = new Pedido(req.body);
     await pedido.save();
 
-    const telegramToken = '7955648954:AAGRY-hJxkGHf9KklrJPLTGfm37mPUUKlVM'; // Substitua por variável de ambiente
-    const telegramChatId = '8411109336'; // Substitua por variável de ambiente
+    const telegramToken = 'xxxxxxxxx'; // Substitua por variável de ambiente
+    const telegramChatId = 'yyyyyyyyy'; // Substitua por variável de ambiente
     const message = `Novo pedido de ${req.body.cliente}: ${req.body.itens.map(item => `${item.nome} x${item.quantidade} (R  $${item.total})`).join(', ')}, Total: R$${req.body.total}, Pagamento: ${req.body.formaPagamento}`;
 
     await axios.post(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
@@ -69,3 +69,4 @@ exports.deletarPedido = async (req, res) => {
 };
 
 module.exports = exports;
+
