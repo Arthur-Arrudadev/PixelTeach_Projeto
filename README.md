@@ -1,6 +1,7 @@
-# 🛒 Loja PixelTech - Backend + Frontend (Entrega Final)
+# 🛒 Loja PixelTech - Backend + Frontend
 
-**Ana Luiza Leão & Arthur Arruda**  
+**Ana Luiza Leão & Arthur Arruda**
+
 📦 Projeto desenvolvido inicialmente como parte da disciplina **Desenvolvimento Web I** (2025.1), **Banco de Dados II** (2025.1) e posteriormente escalado como nota da 1ª unidade da disciplina **Desenvolvimento Web 2** no **IFPE - Campus Paulista** com **MVC + CRUD + Microsserviço (Telegram Bot)**.  
 
 ---
@@ -114,8 +115,8 @@ node index.js
 
 ## 👩‍💻 Autores
 
-Ana Luiza Leão	@AninhaLeao-B
-Arthur Arruda	@Arthur-Arrudadev
+- Ana Luiza Leão	@AninhaLeao-B
+- Arthur Arruda	@Arthur-Arrudadev
 
 ## 📚 Licença
 
