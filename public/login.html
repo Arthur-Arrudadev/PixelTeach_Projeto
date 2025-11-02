@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ana_Luiza & Arthur">
+  <meta name="description" content="Login de usuários da loja PixelTech">
+  <title>Login | TechPixel</title>
+  <link rel="stylesheet" href="/css/estilo.css">
+</head>
+<body>
+
+  <!-- Cabeçalho e Menu -->
+<header class="topo">
+  <div class="cabecalho-topo">
+
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="img/LogoDesigner.png" alt="Logo PixelTech" class="logo">
+      <span class="nome-site">PixelTech</span>
+    </a>
+
+    <!-- Menu da esquerda -->
+    <ul class="menu-esquerda">
+      <li><a href="index.html">🏠 Início</a></li>
+      <li><a href="catalogo.html">📋 Produtos</a></li>
+    </ul>
+
+    <!-- Menu da direita -->
+    <ul class="menu-direita">
+      <li class="dropdown">
+        <a href="#" class="dropbtn">👤 Área do Cliente</a>
+        <div class="dropdown-content">
+          <a href="cadastro.html">➕ Criar Conta</a>
+          <a href="login.html">🔑 Login</a>
+          <a href="area-cliente.html">👤 Meus Dados</a>
+          <a href="meus-pedidos.html">📦 Meus Pedidos</a>
+          <a href="#" id="btn-logout">🚪 Sair</a>
+        </div>
+      </li>
+      <li><a href="carrinho.html">🛒 Carrinho <span id="contador-carrinho"></span></a></li>
+    </ul>
+  </div>
+
+  <!-- Barra de busca embaixo -->
+  <form class="barra-busca" action="catalogo.html" method="get">
+    <input type="text" name="q" placeholder="Buscar produto...">
+    <button type="submit">🔍</button>
+  </form>
+</header>
+
+  <!-- Formulário de Login -->
+  <section class="formulario">
+    <h2>Entre na sua conta</h2>
+
+    <form id="form-login">
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p style="text-align: center; margin-top: 15px;">
+      Ainda não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+    </p>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 PixelTech Eletrônicos. Todos os direitos reservados.</p>
+  </footer>
+
+<script src="js/login.js"></script>
+
+</body>
+</html>
