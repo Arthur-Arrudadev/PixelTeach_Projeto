@@ -92,7 +92,7 @@ npm install
 cp .env.example .env
 #### Edite com seu MONGO_URI e TELEGRAM_TOKEN
 
-# 4. Rode o servidor
+### 4. Rode o servidor
 node index.js
 
 ## 🧠 Tecnologias Utilizadas
