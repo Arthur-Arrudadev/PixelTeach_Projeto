@@ -49,6 +49,7 @@ const produtos = [
     imagem: "img/monitor gamer OLED.jpeg",
     emOferta: false
   },
+
   {
     id: 6,
     nome: "Monitor Gamer AOC",
