@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       estado: document.getElementById("estado").value.trim(),
       cep: document.getElementById("cep").value.trim(),
     };
-
+// Envia o novo endereço para o servidor
     try {
       const resposta = await fetch(`/api/clientes/${clienteLogado._id}/endereco`, {
         method: "PUT",
@@ -88,11 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Mostra visualização
         document.getElementById("endereco-visualizacao").style.display = "block";
         formEndereco.style.display = "none";
-
+// Alerta de sucesso
         alert("Endereço salvo com sucesso!");
       } else {
         alert(dados.mensagem || "Erro ao salvar endereço.");
       }
+// Trata erros de conexão
     } catch (err) {
       console.error("Erro:", err);
       alert("Erro de conexão.");
@@ -114,31 +115,32 @@ document.addEventListener("DOMContentLoaded", () => {
     senhaContainer.style.display = "block";
     btnMostrarSenha.style.display = "none";
   });
-
+// Manipula o envio do formulário de alteração de senha
   document.getElementById("form-senha")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const senhaAtual = document.getElementById("senha-atual").value;
     const novaSenha = document.getElementById("nova-senha").value;
     const confirmar = document.getElementById("confirmar-senha").value;
-
+// Valida se as senhas coincidem
     if (novaSenha !== confirmar) {
       alert("As senhas não coincidem.");
       return;
     }
-
+// Envia a nova senha para o servidor
     try {
       const resposta = await fetch(`/api/clientes/${clienteLogado._id}/senha`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ senhaAtual, novaSenha }),
       });
-
+// Processa a resposta do servidor
       const dados = await resposta.json();
       alert(dados.mensagem || "Erro ao atualizar senha.");
       if (dados.sucesso) {
         senhaContainer.style.display = "none";
         btnMostrarSenha.style.display = "block";
       }
+      // Trata erros de conexão
     } catch (err) {
       alert("Erro de conexão.");
     }
