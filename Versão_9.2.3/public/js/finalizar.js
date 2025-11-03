@@ -1,3 +1,4 @@
+// finalizar.js
 document.addEventListener("DOMContentLoaded", () => {
   const btnFinalizar = document.getElementById("btn-finalizar");
   const corpoTabela = document.getElementById("resumo-itens");
@@ -17,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
       corpoTabela.innerHTML = "<tr><td colspan='3'>Seu carrinho está vazio.</td></tr>";
       return;
     }
-
+// Calcula o total geral e cria as linhas da tabela
     let totalGeral = 0;
     corpoTabela.innerHTML = "";
-
+// Percorre os itens do carrinho e cria as linhas da tabela
     carrinho.forEach(item => {
       const subtotal = item.preco * item.quantidade;
       totalGeral += subtotal;
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       corpoTabela.appendChild(linha);
     });
-
+// Atualiza o total da compra
     totalCompra = totalGeral;
     totalSpan.textContent = totalCompra.toFixed(2).replace(".", ",");
     atualizarParcelas(totalCompra);
@@ -84,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formaPagamentoSelecionada = document.querySelector('input[name="pagamento"]:checked')?.value;
 
+    // Cria o objeto com os dados da compra
     const dadosCompra = {
       cliente: "Nome do cliente fictício",
       endereco: {
@@ -103,10 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
       total: total.toFixed(2),
       formaPagamento: formaPagamentoSelecionada
     };
-
+    // Exibe no console para verificação
     console.log("Forma de pagamento:", formaPagamentoSelecionada);
     console.log("Objeto enviado:", dadosCompra);
 
+    // Envia os dados para o servidor
     fetch('/api/pedidos', {
       method: "POST",
       headers: {
@@ -114,12 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify(dadosCompra)
     })
+    //recebe a resposta do servidor
       .then(response => response.json())
       .then(data => {
         console.log("Pedido salvo com sucesso:", data);
         localStorage.removeItem("carrinho");
         mostrarPopupSucesso();
       })
+      //trata erros de rede ou servidor
       .catch(error => {
         console.error("Erro ao salvar pedido:", error);
         alert("Não foi possível finalizar o pedido.");
@@ -131,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function mostrarPopupSucesso() {
     const popup = document.getElementById("popup-sucesso");
     popup.classList.add("ativo");
-
+   // Fecha ao clicar no botão fechar
     const btnFechar = document.getElementById("btn-fechar");
     btnFechar.addEventListener("click", () => {
       popup.classList.remove("ativo");
