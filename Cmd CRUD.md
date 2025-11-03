@@ -112,6 +112,5 @@ curl http://localhost:8080/api/pedidos -w "\n"
 ### 3. BUSCAR PEDIDO POR ID
 curl http://localhost:8080/api/pedidos/507f1f77bcf86cd799439011 -w "\n"
 
-
-# 4. DELETAR PEDIDO (substitua ID)
+### 4. DELETAR PEDIDO (substitua ID)
 curl -X DELETE http://localhost:8080/api/pedidos/507f1f77bcf86cd799439011 -w "\n"
