@@ -1,3 +1,5 @@
+// area-cliente.js
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. PEGA O CLIENTE DO localStorage
   const clienteLogado = JSON.parse(localStorage.getItem("clienteLogado"));
@@ -110,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 6. BOTÃO ALTERAR SENHA (opcional)
   const btnMostrarSenha = document.getElementById("btn-mostrar-senha");
   const senhaContainer = document.getElementById("senha-container");
-
+  // Mostra o formulário de alteração de senha
   btnMostrarSenha?.addEventListener("click", () => {
     senhaContainer.style.display = "block";
     btnMostrarSenha.style.display = "none";
