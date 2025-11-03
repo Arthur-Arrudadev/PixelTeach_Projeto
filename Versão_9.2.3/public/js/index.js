@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button onclick="adicionarAoCarrinho(${produto.id})">🛒 Adicionar ao Carrinho</button>
       </article>
     `;
+    
     container.insertAdjacentHTML('beforeend', produtoHTML);
   });
 });
