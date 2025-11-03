@@ -1,3 +1,4 @@
+// cadastro.js
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form-cadastro");
 
@@ -8,17 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value;
     const confirma = document.getElementById("confirma").value;
-
+// Valida os campos de entrada
     if (!nome || !email || !senha || !confirma) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
-
+ // Valida se as senhas coincidem
     if (senha !== confirma) {
       alert("As senhas não coincidem.");
       return;
     }
-
+// Prepara os dados para envio
     const dadosCadastro = {
       nome,
       email,
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify(dadosCadastro)
     })
+    //recebe a resposta do servidor
     .then(res => res.json())
     .then(data => {
       console.log("Resposta do servidor:", data);
@@ -40,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       form.reset();
     })
+    //trata erros de rede ou servidor
     .catch(error => {
       console.error("Erro ao salvar cadastro:", error);
       alert("Erro ao cadastrar. Tente novamente.");
