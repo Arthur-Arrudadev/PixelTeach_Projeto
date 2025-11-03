@@ -81,16 +81,16 @@ PixelTech/
 
 ## 🚀 Como Rodar Localmente
 
-# 1. Clone o repositório
+### 1. Clone o repositório
 git clone https://github.com/Arthur-Arrudadev/PixelTeach_Projeto.git
 cd PixelTeach_Projeto
 
-# 2. Instale as dependências
+### 2. Instale as dependências
 npm install
 
-# 3. Configure o .env
+### 3. Configure o .env
 cp .env.example .env
-# Edite com seu MONGO_URI e TELEGRAM_TOKEN
+#### Edite com seu MONGO_URI e TELEGRAM_TOKEN
 
 # 4. Rode o servidor
 node index.js
