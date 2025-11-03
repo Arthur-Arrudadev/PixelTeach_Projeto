@@ -38,7 +38,7 @@ function atualizarCarrinho() {
   carrinho.forEach(item => {
     const subtotal = item.preco * item.quantidade;
     total += subtotal;
-
+  // Cria a linha da tabela
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${item.nome}</td>
@@ -66,7 +66,7 @@ window.alterarQuantidade = function(id, delta) {
   if (!item) return;
 
   item.quantidade += delta;
-  
+  // Remove o item se a quantidade for zero ou menor
   if (item.quantidade <= 0) {
     removerDoCarrinho(id);
   } else {
@@ -74,7 +74,7 @@ window.alterarQuantidade = function(id, delta) {
     atualizarCarrinho();
   }
 };
-
+// Remove item do carrinho
 window.removerDoCarrinho = function(id) {
   carrinho = carrinho.filter(item => item.id !== id);
   salvarCarrinho();
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Atualiza o contador do carrinho no menu
   atualizarContadorCarrinho();
 });
-
+// Atualiza o contador do carrinho no menu
 function atualizarContadorCarrinho() {
   const contador = document.getElementById("contador-carrinho");
   if (contador) {
