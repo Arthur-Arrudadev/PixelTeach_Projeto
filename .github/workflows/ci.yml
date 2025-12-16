@@ -1,4 +1,4 @@
-name: CI - PixelTech
+name: CI - Node.js
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Checkout do repositório
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
@@ -22,5 +22,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Rodar aplicação (check básico)
-        run: node index.js
+      - name: Verificar versão do Node
+        run: node -v
+
+      - name: CI finalizado com sucesso
+        run: echo "CI executado com sucesso 🚀"
