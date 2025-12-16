@@ -23,5 +23,4 @@ jobs:
         run: npm install
 
       - name: Rodar aplicação (check básico)
-        working-directory: loja-pixeltech-backend
         run: node index.js
