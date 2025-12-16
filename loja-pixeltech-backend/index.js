@@ -111,6 +111,34 @@ app.put("/api/clientes/:id/endereco", async (req, res) => {
   }
 });
 
+// Rota de mudar a senha
+
+app.put("/api/clientes/:id/senha", async (req, res) => {
+  const { id } = req.params;
+  const { senhaAtual, novaSenha } = req.body;
+
+  try {
+    const cliente = await Cliente.findById(id);
+
+    if (!cliente) {
+      return res.status(404).json({ sucesso: false, mensagem: "Cliente não encontrado." });
+    }
+
+    if (cliente.senha !== senhaAtual) {
+      return res.status(401).json({ sucesso: false, mensagem: "Senha atual incorreta." });
+    }
+
+    cliente.senha = novaSenha;
+    await cliente.save();
+
+    res.json({ sucesso: true, mensagem: "Senha atualizada com sucesso!", cliente });
+
+  } catch (erro) {
+    console.error("Erro ao atualizar senha:", erro);
+    res.status(500).json({ sucesso: false, mensagem: "Erro ao atualizar senha." });
+  }
+});
+
 // Conectar ao MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {

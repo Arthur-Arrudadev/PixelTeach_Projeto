@@ -65,8 +65,28 @@
         <label for="cep">CEP:</label>
         <input type="text" id="cep" name="cep" required>
 
-        <button type="submit">Salvar Endereço</button>
+        <button type="submit">💾 Salvar Endereço</button>
+        <button type="button" id="btn-cancelar-endereco" class="btn-cancelar">❌ Cancelar</button>
       </form>
+
+      <div id="senha-container" style="display: none;">
+        <form id="form-senha">
+          <h3>🔐 Alterar Senha</h3>
+          <label for="senha-atual">Senha Atual:</label>
+          <input type="password" id="senha-atual" name="senha-atual" required>
+
+          <label for="nova-senha">Nova Senha:</label>
+          <input type="password" id="nova-senha" name="nova-senha" required>
+
+          <label for="confirmar-senha">Confirmar Nova Senha:</label>
+          <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+
+          <button id="btn-atualizar-senha" type="submit">💾 Atualizar Senha</button>
+
+        </form>
+      </div>
+
+    <button id="btn-mostrar-senha" class="btn-alterar">✏️ Alterar Senha</button>
     </section>
 
     <!-- Aqui no futuro dá pra mostrar pedidos, endereço etc. -->

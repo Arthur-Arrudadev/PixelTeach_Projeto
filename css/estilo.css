@@ -771,3 +771,153 @@ body.area-cliente #cliente-nome {
   color: #4a6baf;
   font-size: 1.2em;
 }
+
+/* Estilo para os botões de edição */
+.btn-alterar {
+  background: #4a6baf;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: all 0.3s;
+}
+
+.btn-alterar:hover {
+  background: #3a5a9f;
+}
+
+#senha-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* Estilo do botão ATUALIZAR SENHA */
+#btn-atualizar-senha {
+  background-color: #4a6baf;  /* Azul PixelTech */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 10px; /* Espaço entre os botões */
+}
+
+/* Efeito hover (quando o mouse passa por cima) */
+#btn-atualizar-senha:hover {
+  background-color: #3a5a9f;  /* Azul mais escuro */
+  transform: translateY(-2px);  /* Levanta levemente */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+}
+
+/* Efeito quando clicado */
+#btn-atualizar-senha:active {
+  transform: translateY(0);  /* Volta ao normal */
+  box-shadow: none;
+}
+
+/* Estilo BASE do botão (modo "Alterar Senha") */
+#btn-mostrar-senha {
+  background-color: #4a6baf;  /* Azul PixelTech */
+  color: white;
+  border: none;
+  padding: 10px 55px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Estilo QUANDO VIRA "CANCELAR" (modo azul) */
+#btn-mostrar-senha[data-status="cancelar"] {
+  background-color: #46a1dd;  /* azul */
+  margin-left: 20px;
+  margin-top: -10px;
+  padding: 10px 310px;
+}
+
+/* Efeitos de hover (para os dois estados) */
+#btn-mostrar-senha:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#btn-mostrar-senha:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Botão */
+#btn-cancelar-endereco{
+  background-color: #405eb3;  
+  color: white;
+  padding: 12px 68px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#btn-cancelar-endereco:hover{
+  background-color: #0a50a0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#btn-cancelar-endereco:active{
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ----- Botão "Editar Endereço" ----- */
+#btn-editar-endereco {
+  background-color: #3b6dca;  /* Laranja vibrante */
+  color: white;
+  border: none;
+  padding: 10px 55px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 15px;
+  display: inline-block;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito hover */
+#btn-editar-endereco:hover {
+  background-color: #1fa5da;  /* Laranja mais escuro */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito ao clicar */
+#btn-editar-endereco:active {
+  transform: translateY(0);
+}
+
+/* ----- Botão "Salvar Endereço" (no formulário) ----- */
+#form-endereco button[type="submit"] {
+  background-color: #405eb3;  
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+  margin-left: 150px;
+}
+
+/* Efeitos para o botão de salvar */
+#form-endereco button[type="submit"]:hover {
+  background-color: #2778ae;
+  transform: translateY(-2px);
+}
