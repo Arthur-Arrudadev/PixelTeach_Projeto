@@ -1,129 +1,148 @@
-# 🛒 Loja PixelTech - Backend + Frontend
+# PixelTeach_Projeto
+projeto para web2
 
-**Ana Luiza Leão & Arthur Arruda**
+# Loja PixelTech - Backend
 
-📦 Projeto desenvolvido inicialmente como parte da disciplina **Desenvolvimento Web I** (2025.1), **Banco de Dados II** (2025.1) e posteriormente escalado como nota da 1ª unidade da disciplina **Desenvolvimento Web 2** no **IFPE - Campus Paulista** com **MVC + CRUD + Microsserviço (Telegram Bot)**.  
+Este README descreve como configurar, executar e testar o backend desta aplicação, incluindo o bot do Telegram e a proteção por `API_SECRET`.
 
----
+Pré-requisitos
+- Node.js 18+ versao  (ou compatível com as dependências do projeto)
+- npm
+- Conta e bot no Telegram (token)
+- MongoDB Atlas (ou uma instância Mongo acessível)
 
-## 📌 Sobre o Projeto
+Arquivos importantes
+- `.env` - variáveis sensíveis (NÃO comitar no repositório)
+- `index.js` - ponto de entrada do servidor
+- `services/telegramBot.js` - inicializa o bot (webhook ou polling)
+- `middleware/apiSecret.js` - middleware para proteger rotas via `API_SECRET`
+- `routes/telegramRoutes.js` - endpoint `/telegram/webhook` (opcional em polling)
 
-**PixelTech** é uma loja virtual de produtos eletrônicos construída com foco em **usabilidade**, **design responsivo** e **funcionalidades completas** de um e-commerce, agora com **backend integrado** e **persistência em banco de dados**.
-
-Nesta versão evoluída, a loja simula o fluxo real de um sistema de vendas online, com **cadastro de usuários**, **login**, **armazenamento de endereços**, **pedidos salvos em banco de dados**, outras interações dinâmicas com **MongoDB Atlas** e também **serviço de mensagem pelo telegram**.
-
----
-
-## ✅ Requisitos Atendidos (100%)
-
-| Requisito | Status | Prova |
-|------------|:--------:|-------|
-| **(i) Backend CRUD** | ✅ | Clientes, Produtos e Pedidos (**MongoDB Atlas**) |
-| **(ii) Componente Avançado** | ✅ | Sistema de Notificações via **Telegram Bot** usando Axios |
-| **(iii) GitHub** | ✅ | Histórico de commits, README e versionamento completo |
-| **(iv) Deploy AWS** | ✅ | Implantado no **AWS Cloud9** (online com HTTPS) |
-
----
-
-## 🌐 Deploy
-
-- **Plataforma**: AWS Cloud9  
-- **URL de Acesso**:
-  🔗 [https://b5782c327b21482d8da5c7dd262823f6.vfs.cloud9.us-east-1.amazonaws.com:8080](https://b5782c327b21482d8da5c7dd262823f6.vfs.cloud9.us-east-1.amazonaws.com:8080)
-- **Node.js**: `v18.20.8`  
-- **Frontend**: Pasta `public/` com HTML, CSS e JS  
-
----
-
-## ⚙️ Funcionalidades
-
-- ✅ Catálogo com lista de produtos (nome, imagem, preço, botão de compra)
-- 🔍 Filtros por **preço**, **categoria**, **ofertas** e **barra de busca**
-- 🛍️ Carrinho de compras com contador, ajuste de quantidade e cálculo de total
-- 💳 Página de finalização com **simulação de pagamento** e **registro de pedido**
-- 👤 Cadastro, login e logout de clientes com dados persistidos no banco
-- 📦 Formulário de endereço dinâmico com visualização e edição
-- 🔐 Alteração de senha com validação segura
-- 💾 Armazenamento de dados no **MongoDB Atlas**
-- 🌐 Integração front-end e back-end com **fetch API**
-- 🤖 Envio de mensagem automática ao receber um novo pedido
-
----
-
-## 🧩 Estrutura do Projeto
-
-PixelTech/
-├── controllers/
-│ ├── ClienteController.js
-│ ├── PedidoController.js
-│ └── ProdutoController.js
-├── models/
-│ ├── Cliente.js
-│ ├── Pedido.js
-│ └── Produto.js
-├── routes/
-│ ├── clienteRoutes.js
-│ ├── pedidoRoutes.js
-│ └── produtoRoutes.js
-├── public/
-│ ├── css/
-│ │ └── estilo.css
-│ ├── js/
-│ │ ├── login.js
-│ │ ├── area-cliente.js
-│ │ └── finalizar.js
-│ └── *.html
-├── .env
-├── index.js
-└── package.json
-
----
-
-## 🚀 Como Rodar Localmente
-
-### 1. Clone o repositório
-git clone https://github.com/Arthur-Arrudadev/PixelTeach_Projeto.git
-cd PixelTeach_Projeto
-
-### 2. Instale as dependências
+Instalação
+1. Abra um terminal na pasta do backend:
+```powershell
+cd 'C:\Users\arthu\OneDrive\Documentos\GitHub\PixelTech-Projeto\Versão_9.7.2\loja-pixeltech-backend'
+```
+2. Instale dependências:
+```powershell
 npm install
+```
 
-### 3. Configure o .env
-cp .env.example .env
-#### Edite com seu MONGO_URI e TELEGRAM_TOKEN
+Configurar variáveis de ambiente
+Crie um arquivo `.env` (baseie-se em `.env.example`) com as variáveis necessárias:
 
-### 4. Rode o servidor
-node index.js
+- `MONGO_URI` - string de conexão com MongoDB Atlas
+- `TELEGRAM_BOT_TOKEN` - token do bot (obtido via BotFather)
+- `BOT_WEBHOOK_URL` - URL pública para webhook (ex.: https://seu-dominio.com)
+- `PORT` - porta do servidor (ex.: 3000)
+- `API_SECRET` - chave secreta usada pelo middleware para rotas protegidas
+- `TELEGRAM_USE_POLLING` - `true` para forçar polling (útil em dev local sem HTTPS)
+- `NODE_ENV` - `production` em produção
 
-## 🧠 Tecnologias Utilizadas
+Exemplo rápido (NÃO comitar este arquivo):
+```
+MONGO_URI=mongodb+srv://usuario:senha@cluster0.xxxxx.mongodb.net/meubancodedados
+TELEGRAM_BOT_TOKEN=123456:ABC-DEF
+BOT_WEBHOOK_URL=https://seu-dominio.com
+PORT=3000
+API_SECRET=minha_chave_secreta_123
+TELEGRAM_USE_POLLING=true
+NODE_ENV=development
+```
 
-### 🔧 Front-end
-- **HTML5**
-- **CSS3**
-- **JavaScript ES6+**
-- **Fetch API**
-- **localStorage**
+Rodando o servidor
+```powershell
+npm start
+```
 
-### 🛠️ Back-end
-- **Node.js**
-- **Express.js**
-- **MongoDB Atlas**
-- **Mongoose**
-- **dotenv**
-- **Cors**
-- **Axios**
+Logs esperados
+- Conexão com Mongo: "🟢 Conectado ao MongoDB Atlas"
+- Se em polling: "⚪ Telegram bot iniciado em modo polling (desenvolvimento)."
+- Se em webhook (produção com HTTPS): "✅ Telegram webhook definido em https://.../telegram/webhook"
 
-## 👩‍💻 Autores
+Testes básicos
 
-- Ana Luiza Leão	@AninhaLeao-B
-- Arthur Arruda	@Arthur-Arrudadev
+1) Rota protegida por `API_SECRET`:
+```powershell
+Invoke-RestMethod -Uri 'http://localhost:3000/api/secure-example' -Headers @{ 'x-api-key' = 'minha_chave_secreta_123' } -Method Get
+```
+Deve retornar: { ok: true, message: 'Acesso autorizado via API_SECRET' }
 
-## 📚 Licença
+2) Testar bot (modo polling)
+- Abra o Telegram e envie mensagens ao bot (use o username do bot). Teste `/start`, `/help` e texto livre.
 
-Este projeto é acadêmico e **não deve ser utilizado em ambiente de produção real**.
+3) Testar webhook (modo produção)
+- Configure `BOT_WEBHOOK_URL` com uma URL pública HTTPS (ou use ngrok durante o dev). Reinicie o servidor.
+- O endpoint de webhook é: `POST /telegram/webhook` — o Telegram enviará updates para `https://<BOT_WEBHOOK_URL>/telegram/webhook`.
 
----
+Simular um update manualmente (útil para debugging):
+```powershell
+$update = @{ update_id = 123456; message = @{ message_id = 1; from = @{ id = 111111; is_bot = $false; first_name = 'Teste' }; chat = @{ id = 111111; type = 'private' }; text = '/start' } }
+Invoke-RestMethod -Uri 'http://localhost:3000/telegram/webhook' -Method Post -Body ($update | ConvertTo-Json -Depth 5) -ContentType 'application/json'
+```
 
-## 💖 Agradecimentos
+Segurança
+- Nunca comite o arquivo `.env` com tokens e senhas.
+- Em produção, use webhook com HTTPS e `NODE_ENV=production`.
+- Proteja rotas sensíveis com o `API_SECRET` (o middleware aceita `x-api-key`, `Authorization: Bearer <key>` ou `?api_key=`).
 
-Agradecemos aos professores responsável pela disciplina e ao IFPE – Campus Paulista pelo apoio e oportunidade de desenvolver este projeto prático e desafiador.
+Manutenção e vulnerabilidades
+- Após instalar dependências, verifique vulnerabilidades:
+```powershell
+npm audit
+npm audit fix
+```
+Use `npm audit fix --force` com cautela (pode causar breaking changes).
+
+Próximos passos sugeridos
+- Implementar testes automatizados para o middleware `apiSecret`.
+- Adicionar rota administrativa para (re)definir webhook dinamicamente (opcional).
+
+----
+Arquivo gerado automaticamente pelo assistente. Se quiser, posso ajustar exemplos, adicionar comandos para Docker, ou criar arquivos de teste.
+
+Como testar via HTTPS em localhost (opções)
+
+1) Usando mkcert (gera certificados locais confiáveis):
+- Instale mkcert (https://github.com/FiloSottile/mkcert)
+- Crie certificados para localhost:
+```powershell
+mkcert -install
+mkcert localhost 127.0.0.1 ::1
+```
+Isso gera dois arquivos: `localhost+2-key.pem` e `localhost+2.pem` (nomes podem variar).
+
+No seu `.env`, configure:
+```
+HTTPS=true
+HTTPS_KEY_FILE=C:\caminho\para\localhost+2-key.pem
+HTTPS_CERT_FILE=C:\caminho\para\localhost+2.pem
+PORT=3000
+```
+Reinicie o servidor (`npm start`). Acesse em `https://localhost:3000`.
+
+2) Usando ngrok (recomendado para webhook do Telegram):
+- Execute `ngrok http 3000` e pegue a URL HTTPS fornecida (ex.: `https://abcd1234.ngrok.io`).
+- Configure `BOT_WEBHOOK_URL` no `.env` com essa URL e chame a rota administrativa para alternar para webhook, ou reinicie com `NODE_ENV=production`.
+
+Alternar modo do bot via rota administrativa
+- Para alternar em runtime entre polling e webhook (requer `API_SECRET`):
+	- Polling:
+		```powershell
+		Invoke-RestMethod -Uri 'http://localhost:3000/admin/switch-mode' -Method Post -Body (@{ mode='polling' } | ConvertTo-Json) -ContentType 'application/json' -Headers @{ 'x-api-key' = 'minha_chave_secreta_123' }
+		```
+	- Webhook:
+		```powershell
+		Invoke-RestMethod -Uri 'http://localhost:3000/admin/switch-mode' -Method Post -Body (@{ mode='webhook'; webhookUrl='https://abcd1234.ngrok.io' } | ConvertTo-Json) -ContentType 'application/json' -Headers @{ 'x-api-key' = 'minha_chave_secreta_123' }
+		```
+
+Executando testes (Jest)
+- Instale dependências (inclui devDependencies):
+```powershell
+npm install
+```
+- Rode os testes:
+```powershell
+npm test
+```
+
