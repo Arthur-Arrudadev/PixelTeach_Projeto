@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ana_Luiza & Arthur">
+  <meta name="description" content="Página de cadastro da loja PixelTech">
+  <title>Criar Conta | PixelTech</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <!-- Cabeçalho e Menu -->
+<header class="topo">
+  <div class="cabecalho-topo">
+
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="img/LogoDesigner.png" alt="Logo PixelTech" class="logo">
+      <span class="nome-site">PixelTech</span>
+    </a>
+
+    <!-- Menu da esquerda -->
+    <ul class="menu-esquerda">
+      <li><a href="index.html">🏠 Início</a></li>
+      <li><a href="catalogo.html">📋 Produtos</a></li>
+    </ul>
+
+    <!-- Menu da direita -->
+    <ul class="menu-direita">
+      <li class="dropdown">
+        <a href="#" class="dropbtn">👤 Área do Cliente</a>
+        <div class="dropdown-content">
+          <a href="cadastro.html">➕ Criar Conta</a>
+          <a href="login.html">🔑 Login</a>
+          <a href="area-cliente.html">👤 Meus Dados</a>
+          <a href="meus-pedidos.html">📦 Meus Pedidos</a>
+          <a href="#" id="btn-logout">🚪 Sair</a>
+        </div>
+      </li>
+      <li><a href="carrinho.html">🛒 Carrinho <span id="contador-carrinho"></span></a></li>
+    </ul>
+  </div>
+
+  <!-- Barra de busca embaixo -->
+  <form class="barra-busca" action="catalogo.html" method="get">
+    <input type="text" name="q" placeholder="Buscar produto...">
+    <button type="submit">🔍</button>
+  </form>
+</header>
+
+  <!-- Formulário de Cadastro -->
+  <section class="formulario">
+    <h2>Preencha seus dados</h2>
+
+    <form id="form-cadastro">
+      <label for="nome">Nome Completo:</label>
+      <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required placeholder="Crie uma senha">
+
+      <label for="confirma">Confirmar Senha:</label>
+      <input type="password" id="confirma" name="confirma" required placeholder="Confirme sua senha">
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 PixelTech Eletrônicos. Todos os direitos reservados.</p>
+  </footer>
+
+<script src="js/login.js"></script>
+<script src="js/cadastro.js"></script>
+
+</body>
+</html>

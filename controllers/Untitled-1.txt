@@ -1,5 +1,0 @@
-"C:\Users\arthu\Downloads\PixalTech-projeto.pem"
-
-
-
-ssh -i "C:\Users\arthu\Downloads\loja.pem" ubuntu@ec2-3-16-212-223.us-east-2.compute.amazonaws.com

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ana_Luiza & Arthur">
+  <meta name="description" content="Loja de eletrônicos com as melhores ofertas da web!">
+  <title>PixelTech</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <!-- Cabeçalho e Menu -->
+<header class="topo">
+  <div class="cabecalho-topo">
+
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="img/LogoDesigner.png" alt="Logo PixelTech" class="logo">
+      <span class="nome-site">PixelTech</span>
+    </a>
+
+    <!-- Menu da esquerda -->
+    <ul class="menu-esquerda">
+      <li><a href="index.html">🏠 Início</a></li>
+      <li><a href="catalogo.html">📋 Produtos</a></li>
+    </ul>
+
+    <!-- Menu da direita -->
+    <ul class="menu-direita">
+      
+      <li class="dropdown">
+        <a href="#" class="dropbtn">👤 Área do Cliente</a>
+        <div class="dropdown-content">
+          <a href="cadastro.html">➕ Criar Conta</a>
+          <a href="login.html">🔑 Login</a>
+          <a href="area-cliente.html">👤 Meus Dados</a>
+          <a href="meus-pedidos.html">📦 Meus Pedidos</a>
+          <a href="#" id="btn-logout">🚪 Sair</a>
+        </div>
+      </li>
+      <li><a href="carrinho.html">🛒 Carrinho <span id="contador-carrinho"></span></a></li>
+      
+    </ul>
+  </div>
+
+  <!-- Barra de busca embaixo -->
+  <form class="barra-busca" action="catalogo.html" method="get">
+    <input type="text" name="q" placeholder="Buscar produto...">
+    <button type="submit">🔍</button>
+  </form>
+</header>
+
+<!-- Carrossel de Banner -->
+<div class="swiper-container banner">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="img/banner1.png" alt="Oferta1">
+    </div>
+    <div class="swiper-slide">
+      <img src="img/banner2.png" alt="Oferta2">
+    </div>
+    <div class="swiper-slide">
+      <img src="img/banner3.png" alt="Oferta3">
+    </div>
+  </div>
+
+  <!-- Setas de navegação -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- Paginação opcional -->
+  <div class="swiper-pagination"></div>
+</div>
+      
+        <section class="destaque">
+          <h2>Ofertas Imperdíveis!</h2>
+          <div class="ofertas" id="ofertas-destaque">
+            <!-- Produtos serão inseridos aqui dinamicamente -->
+          </div>
+        </section>
+
+        <script src="js/catalogo.js"></script>
+        <script src="js/carrinho.js"></script>
+        <script src="js/index.js"></script>
+
+  <div id="mensagem-carrinho" class="mensagem-carrinho"></div>
+
+  <!-- Rodapé -->
+<footer>
+  <p>&copy; 2025 PixelTech Eletrônicos. Todos os direitos reservados.
+     <a href="#" id="admin-access" title="Área Administrativa" style="margin-left: 10px; text-decoration: none; font-size: 14px;">
+       ⚙️
+     </a>
+  </p>
+</footer>
+
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+<script>
+  const ofertasContainer = document.querySelector(".ofertas");
+
+  produtos.forEach(produto => {
+    if (produto.oferta) {
+      const artigo = document.createElement("article");
+      artigo.classList.add("produto");
+
+      artigo.innerHTML = `
+        <img src="${produto.imagem}" alt="${produto.nome}">
+        <h3>${produto.nome}</h3>
+        <p>De R$ ${produto.preco.toFixed(2)} por <strong>R$ ${produto.oferta.toFixed(2)}</strong></p>
+        <button>Adicionar ao carrinho</button>
+      `;
+
+      ofertasContainer.appendChild(artigo);
+    }
+  });
+</script>
+
+<script>
+  const adminBtn = document.getElementById("admin-access");
+  adminBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = "admin.html";
+  });
+</script>
+  
+</body>
+</html>

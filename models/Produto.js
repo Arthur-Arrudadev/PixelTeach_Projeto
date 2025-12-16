@@ -1,13 +1,60 @@
-//modelo de dados para Produtos usando Mongoose com MongoDB
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ProdutoSchema = new Schema({
-  nome: String,
-  preco: Number,
-  descricao: String,
-  categoria: String,
-  estoque: Number
-});
+const ProdutoSchema = new Schema(
+  {
+    nome: {
+      type: String,
+      required: true,
+      trim: true
+    },
 
-module.exports = mongoose.model('Produto', ProdutoSchema);
+    descricao: {
+      type: String,
+      default: ""
+    },
+
+    preco: {
+      type: Number,
+      required: true,
+      min: 0.01
+    },
+
+    precoOriginal: {
+      type: Number,
+      default: 0,
+      min: 0
+    },
+
+    categoria: {
+      type: String,
+      required: true
+    },
+
+    estoque: {
+      type: Number,
+      default: 0,
+      min: 0
+    },
+
+    imagem: {
+      type: String,
+      default: "img/placeholder.png"
+    },
+
+    emOferta: {
+      type: Boolean,
+      default: false
+    },
+
+    ativo: {
+      type: Boolean,
+      default: true
+    }
+  },
+  {
+    timestamps: true
+  }
+);
+
+module.exports = mongoose.model("Produto", ProdutoSchema);

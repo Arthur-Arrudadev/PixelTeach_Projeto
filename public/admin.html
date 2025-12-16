@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ana_Luiza & Arthur">
+  <meta name="description" content="Painel Administrativo - PixelTech">
+  <title>PixelTech - Painel Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/estilo.css"> 
+</head>
+<body>
+
+  <!-- HEADER PADRÃO da loja (igualzinho ao index) -->
+  <header class="topo">
+    <div class="cabecalho-topo">
+      <a href="index.html">
+        <img src="img/LogoDesigner.png" alt="Logo PixelTech" class="logo">
+        <span class="nome-site">PixelTech</span>
+      </a>
+
+      <ul class="menu-esquerda">
+        <li><a href="index.html">🏠 Início</a></li>
+        <li><a href="catalogo.html">📋 Produtos</a></li>
+      </ul>
+
+      <ul class="menu-direita">
+        <li class="dropdown">
+          <a href="#" class="dropbtn">👤 Área do Cliente</a>
+          <div class="dropdown-content">
+            <a href="cadastro.html">➕ Criar Conta</a>
+            <a href="login.html">🔑 Login</a>
+            <a href="area-cliente.html">👤 Meus Dados</a>
+            <a href="meus-pedidos.html">📦 Meus Pedidos</a>
+            <a href="#" id="btn-logout">🚪 Sair</a>
+          </div>
+        </li>
+        <li><a href="carrinho.html">🛒 Carrinho <span id="contador-carrinho"></span></a></li>
+      </ul>
+    </div>
+
+    <form class="barra-busca" action="catalogo.html" method="get">
+      <input type="text" name="q" placeholder="Buscar produto...">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL - Formulário centralizado -->
+  <main class="admin-login-container">
+    <div class="admin-login-card">
+      <h1>Painel Administrativo</h1>
+      
+      <input type="email" id="email" placeholder="E-mail do administrador" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <button type="button" onclick="logar()">Entrar no Painel</button>
+      
+      <p id="resultado"></p>
+    </div>
+  </main>
+
+  <!-- RODAPÉ PADRÃO -->
+  <footer>
+    <p>© 2025 PixelTech Eletrônicos. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Seus scripts (caso precise do carrinho ou login cliente na mesma página) -->
+  <script src="js/carrinho.js"></script>
+  <script src="js/login.js"></script>
+
+  <!-- Script do login admin -->
+  <script>
+    async function logar() {
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value;
+
+      if (!email || !senha) {
+        document.getElementById("resultado").innerText = "Preencha todos os campos!";
+        return;
+      }
+
+      try {
+        const resposta = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha })
+        });
+
+        const dados = await resposta.json();
+
+        if (dados.sucesso) {
+          localStorage.setItem("tokenAdmin", dados.token);
+          alert("Login realizado com sucesso!");
+          window.location.href = "painel.html";
+        } else {
+          document.getElementById("resultado").innerText = dados.mensagem || "Credenciais inválidas";
+        }
+      } catch (erro) {
+        console.error(erro);
+        document.getElementById("resultado").innerText = "Erro de conexão com o servidor";
+      }
+    }
+  </script>
+</body>
+</html>

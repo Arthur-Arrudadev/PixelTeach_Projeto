@@ -1,11 +1,16 @@
-//cliente.js
-//modelo de dados para Clientes usando Mongoose com MongoDB
 const mongoose = require("mongoose");
 
 const ClienteSchema = new mongoose.Schema({
   nome: { type: String, required: true },
   email: { type: String, required: true },
   senha: { type: String, required: true },
+  
+  role: {
+    type: String,
+    enum: ["cliente", "admin"],
+    default: "cliente"
+  },
+
   endereco: {
     rua: String,
     numero: String,
@@ -14,6 +19,7 @@ const ClienteSchema = new mongoose.Schema({
     estado: String,
     cep: String,
   },
+
   dataCadastro: {
     type: Date,
     default: Date.now

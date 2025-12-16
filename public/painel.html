@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ana_Luiza & Arthur">
+  <meta name="description" content="Painel Administrativo - PixelTech">
+  <title>Painel Administrativo - PixelTech</title>
+
+  <!-- CSS principal + CSS específico do painel -->
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/painel-admin.css">
+</head>
+<body>
+
+  <!-- HEADER PADRÃO -->
+  <header class="topo">
+    <div class="cabecalho-topo">
+      <a href="index.html">
+        <img src="img/LogoDesigner.png" alt="Logo PixelTech" class="logo">
+        <span class="nome-site">PixelTech</span>
+      </a>
+
+      <ul class="menu-esquerda">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html">Produtos</a></li>
+      </ul>
+
+      <ul class="menu-direita">
+        <li><a href="#" id="logout-admin">Logout</a></li>
+        <li><a href="carrinho.html">Carrinho <span id="contador-carrinho"></span></a></li>
+      </ul>
+    </div>
+
+    <form class="barra-busca" action="catalogo.html" method="get">
+      <input type="text" name="q" placeholder="Buscar produto...">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="admin-panel-container">
+    <div class="admin-panel-card">
+      <h1>Bem-vindo ao Painel Administrativo</h1>
+      
+      <div class="admin-panel-buttons">
+        <button onclick="listar('clientes')">Listar Clientes</button>
+        <button onclick="listar('produtos')">Listar Produtos</button>
+        <button onclick="listar('pedidos')">Listar Pedidos</button>
+      </div>
+      
+      <div id="saida-container">
+        <p class="mensagem-inicial">
+          Clique em uma das opções acima para carregar os dados...
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ PADRÃO -->
+  <footer>
+    <p>© 2025 PixelTech Eletrônicos. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/carrinho.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/painel-admin.js"></script>
+</body>
+</html>
