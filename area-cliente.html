@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Área do Cliente | PixelTech</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="area-cliente">
+  <!-- Cabeçalho -->
+  <header class="topo">
+    <div class="cabecalho-topo">
+      <a href="index.html">
+        <img src="img/LogoDesigner.png" alt="Logo PixelTech" class="logo">
+        <span class="nome-site">PixelTech</span>
+      </a>
+
+    <!-- Menu da esquerda -->
+    <ul class="menu-esquerda">
+      <li><a href="index.html">🏠 Início</a></li>
+      <li><a href="catalogo.html">📋 Produtos</a></li>
+    </ul>
+
+    <!-- Menu da direita -->
+      <ul class="menu-direita">
+        <li><a href="#" id="btn-logout">🚪 Sair</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="formulario">
+    <h2>Olá, <span id="cliente-nome">cliente</span>!</h2>
+    <p><strong>Email:</strong> <span id="cliente-email"></span></p>
+
+    <section class="formulario">
+
+      <div id="endereco-visualizacao" style="display: none;">
+        <h3>Endereço Cadastrado:</h3>
+        <p><strong>Rua:</strong> <span id="vis-rua"></span></p>
+        <p><strong>Número:</strong> <span id="vis-numero"></span></p>
+        <p><strong>Bairro:</strong> <span id="vis-bairro"></span></p>
+        <p><strong>Cidade:</strong> <span id="vis-cidade"></span></p>
+        <p><strong>Estado:</strong> <span id="vis-estado"></span></p>
+        <p><strong>CEP:</strong> <span id="vis-cep"></span></p>
+        <button id="btn-editar-endereco">✏️ Editar Endereço</button>
+      </div>
+
+      <form id="form-endereco">
+        <h3>📦 Endereço de Entrega</h3>
+        <label for="rua">Rua:</label>
+        <input type="text" id="rua" name="rua" required>
+
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" required>
+
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" required>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required>
+
+        <button type="submit">Salvar Endereço</button>
+      </form>
+    </section>
+
+    <!-- Aqui no futuro dá pra mostrar pedidos, endereço etc. -->
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 PixelTech Eletrônicos. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/area-cliente.js"></script>
+</body>
+</html>
