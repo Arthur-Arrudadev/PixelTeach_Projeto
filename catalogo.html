@@ -1,3 +1,7 @@
+<!-- //catalogo.html -->
+<!-- pagina catalogo html front -->
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -62,7 +66,7 @@
     <input type="checkbox" id="filtro-oferta"> Ofertas PixelTech 🔥
   </label>
 </div>
-
+<!-- filtro por preço menor para o maior e vice versa -->
   <div class="filtro-bloco">
     <h3>Ordenar Preços</h3>
     <select id="ordenar-preco">
@@ -72,6 +76,7 @@
     </select>
   </div>
 
+  <!-- //Filtro por Categoria -->
   <div class="filtro-bloco">
     <h3>Categoria</h3>
     <label><input type="checkbox" name="categoria" value="tvs"> TVs</label>
@@ -85,6 +90,7 @@
     <label><input type="checkbox" name="categoria" value="headset"> Headset</label>
   </div>
 
+  <!-- defina o filtro por faixa de preço com slider -->
   <div class="filtro-bloco">
     <h3>Preço</h3>
     <input type="range" id="slider-preco" name="preco" min="0" max="10000" value="10000">
@@ -93,10 +99,10 @@
       <span id="preco-atual">Até R$ 10000</span>
     </div>
   </div>
-
+  <!-- botao limpar filtros -->
   <button id="btn-limpar-filtros"> Limpar filtros</button>
-
-  <button type="submit">Aplicar Filtros</button> <!--Botão sem uso, mas eu deixei porque ele é bonitinho-->
+<!--Botão sem uso, mas eu deixei porque ele é bonitinho-->
+  <button type="submit">Aplicar Filtros</button> 
 
 </section>
 
