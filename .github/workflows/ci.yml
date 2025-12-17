@@ -25,5 +25,8 @@ jobs:
       - name: Verificar versão do Node
         run: node -v
 
+      - name: Rodar testes
+        run: npm test
+
       - name: CI finalizado com sucesso
         run: echo "CI executado com sucesso 🚀"
